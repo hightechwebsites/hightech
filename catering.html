@@ -13,7 +13,7 @@
 <section class="cmenu" id="menu"><div class="wrap"><div class="cm-head"><div><div class="ey-line l"><span class="eyebrow">The catering menu</span></div><h2>Build a generous spread.</h2><p class="sub">Choose your favorites. We&rsquo;ll help you plan the table.</p></div>
 <div class="legend" aria-label="Tray sizes"><span>Small tray &middot; serves 10</span><span>Large tray &middot; serves 20</span></div></div>
 <div class="cm-tabs"><div class="tabs" id="tabs" role="tablist" aria-label="Catering categories"></div><label class="tog"><input type="checkbox" id="vegtog"><i></i><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 25C5 14 12 6 26 6c0 14-7 21-17 19M7 25c4-7 8-10 13-12"/></svg><span>Show vegetarian &amp; vegan items</span></label></div>
-<div class="cm-grid" id="cgrid" aria-live="polite"></div>
+<div class="cm-grid" id="cgrid" aria-live="polite"></div><div id="also"></div>
 <p class="cm-note">Prices shown from the published catering menu. Confirm current pricing when ordering.</p>
 <div class="c"><a class="btn btn-out" id="fullmenu" target="_blank" rel="noopener" href="#">View the full catering menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
 
@@ -43,14 +43,18 @@ const TAB={'Meat dishes':'Kabobs','Salads & rice':'Rice & salads','Vegetarian & 
 const PH={'Chicken Kabob':'murgh','Teka Kabob':'teka','Lamb Kabob':'lamb','Chapli Kabob':'chapli','Shami Kabob':'shami','Chicken Korma':'korma','White Rice':'rice','Brown Rice':'rice','House Salad':'salad','Grilled Chicken Salad':'chickensalad','Mixed Vegetables':'mixveg','Grilled Vegetables':'grilledveg','Bolani':'bolani','Borani Banjan':'borani','Sabzi':'sabzi','Daal':'daal','Lobia':'lobia','Mantu':'mantu','Quabili Pallow':'qabili','Fish Curry':'fish'};
 const VEGEXTRA=['White Rice','Brown Rice','House Salad'];
 const isVeg=(c,n)=>c==='Vegetarian & vegan'||VEGEXTRA.includes(n);
-const PLATE='<svg viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true"><polygon points="200,40 236,130 330,96 290,186 360,200 290,214 330,304 236,270 200,360 164,270 70,304 110,214 40,200 110,186 70,96 164,130" stroke-width="3"/><circle cx="200" cy="200" r="64" stroke-width="3"/></svg>';
+const PLATE_UNUSED='<svg viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true"><polygon points="200,40 236,130 330,96 290,186 360,200 290,214 330,304 236,270 200,360 164,270 70,304 110,214 40,200 110,186 70,96 164,130" stroke-width="3"/><circle cx="200" cy="200" r="64" stroke-width="3"/></svg>';
 let cur=G.catering[0].cat;
-function card(c,i){const k=PH[i[0]],badge=/Korma|Fish|Kofta|Mantu|Quabili|Aushak|Shola Goshti/.test(i[0])&&c!=='Vegetarian & vegan'?'<span class="badge">Entree</span>':'';
- return '<article class="mc rv in"><div class="mc-img">'+(k?'<img src="'+photo(k,900,600)+'" width="900" height="600" loading="lazy" alt="'+i[0]+'">':'<div class="mc-ph">'+PLATE+'</div>')+badge+'</div><div class="mc-b"><div class="mc-n"><h3>'+i[0]+'</h3><p>'+(i[1]||'')+'</p></div><div class="mc-p"><span><small>Small</small><b>$'+i[2]+'</b></span><span><small>Large</small><b>$'+i[3]+'</b></span></div></div></article>'}
+function pk(n){return n==='Brown Rice'?null:PH[n]}
+function card(c,i){const k=pk(i[0]),badge=/Korma|Fish|Kofta|Mantu|Quabili|Aushak|Shola Goshti/.test(i[0])&&c!=='Vegetarian & vegan'?'<span class="badge">Entree</span>':'';
+ return '<article class="mc rv in"><div class="mc-img"><img src="'+photo(k,900,600)+'" width="900" height="600" loading="lazy" alt="'+i[0]+'">'+badge+'</div><div class="mc-b"><div class="mc-n"><h3>'+i[0]+'</h3><p>'+(i[1]||'')+'</p></div><div class="mc-p"><span><small>Small</small><b>$'+i[2]+'</b></span><span><small>Large</small><b>$'+i[3]+'</b></span></div></div></article>'}
+function row(c,i){return '<div class="ar"><div><h4>'+i[0]+'</h4>'+(i[1]?'<p>'+i[1]+'</p>':'')+'</div><div class="mc-p"><span><small>Small</small><b>$'+i[2]+'</b></span><span><small>Large</small><b>$'+i[3]+'</b></span></div></div>'}
 function draw(){const veg=$('vegtog').checked;
  $('tabs').innerHTML=G.catering.map(c=>'<button role="tab" aria-selected="'+(!veg&&c.cat===cur)+'" data-k="'+c.cat+'" class="'+(!veg&&c.cat===cur?'on':'')+'">'+TAB[c.cat]+'</button>').join('');
- let out='';if(veg){G.catering.forEach(c=>c.items.forEach(i=>{if(isVeg(c.cat,i[0]))out+=card(c.cat,i)}))}else out=G.catering.find(c=>c.cat===cur).items.map(i=>card(cur,i)).join('');
- $('cgrid').innerHTML=out}
+ let list=[];if(veg){G.catering.forEach(c=>c.items.forEach(i=>{if(isVeg(c.cat,i[0]))list.push([c.cat,i])}))}else list=G.catering.find(c=>c.cat===cur).items.map(i=>[cur,i]);
+ const ph=list.filter(([c,i])=>pk(i[0])),n=Math.floor(ph.length/3)*3,cards=ph.slice(0,n),rest=list.filter(x=>!cards.includes(x));
+ $('cgrid').innerHTML=cards.map(([c,i])=>card(c,i)).join('');
+ $('also').innerHTML=rest.length?'<h4 class="al-h">Also available</h4><div class="alsol">'+rest.map(([c,i])=>row(c,i)).join('')+'</div>':''}
 $('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b){cur=b.dataset.k;$('vegtog').checked=false;draw()}});
 $('vegtog').onchange=draw;
 $('vegjump').onclick=e=>{$('vegtog').checked=true;draw()};
