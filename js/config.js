@@ -33,6 +33,13 @@ window.GHAZNI = {
   "patio": "https://static.wixstatic.com/media/be299b_89ab54ccbb6540f291d7637020ed2017~mv2_d_5168_3448_s_4_2.jpg",
   "trays": "https://static.wixstatic.com/media/be299b_e4b215693d414d2dac72e45aa0ad998a~mv2_d_4470_3448_s_4_2.jpg",
   "buffet": "https://static.wixstatic.com/media/93f14c_f4fb4a6c2ca3425188c882dd535862b9~mv2.jpeg",
+  "korma": "https://static.wixstatic.com/media/93f14c_77601ef2f66c429e8bc7d72dc47d7075~mv2.jpeg",
+  "mixveg": "https://static.wixstatic.com/media/eea314_4c75d94068694e9fa322267252db5b1a~mv2.png",
+  "grilledveg": "https://static.wixstatic.com/media/93f14c_06cde711dddb4d01b969c3220361d69d~mv2.jpeg",
+  "salad": "https://static.wixstatic.com/media/93f14c_1f4eb2e59b874d908109ad46492c7ff0~mv2.jpg",
+  "chickensalad": "https://static.wixstatic.com/media/eea314_e21d8bbde0eb4c9baf6cd833d523f301~mv2.png",
+  "mantu": "https://static.wixstatic.com/media/93f14c_807c26e9ef96438f8d8a2e0618bf325a~mv2.jpg",
+  "fish": "https://static.wixstatic.com/media/eea314_f68a828ec115482a9b0b10d47807ccc9~mv2.png",
   "halal": "https://static.wixstatic.com/media/be299b_6404c895dcf34c61b9f4111eaf68e8e7~mv2.png"
 },
   email: 'ghazniafghankabobs@gmail.com',

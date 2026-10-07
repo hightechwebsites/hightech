@@ -3,92 +3,80 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%2314110c%27/%3E%3Cpath d=%27M16 4l3 9 9 3-9 3-3 9-3-9-9-3 9-3z%27 fill=%27%23c9a05a%27/%3E%3C/svg%3E"><link rel="stylesheet" href="css/style.css"></head><body data-page="catering"><main id="main">
-<section class="hero short"><div class="bgphoto" data-photo="buffet,1000,700"></div><canvas id="bg" aria-hidden="true"></canvas><div class="wrap"><span class="eyebrow">We cater for all occasions</span><h1>Good food.<br><em class="g">Great company.</em></h1><p class="lead">Event, dinner, party, wedding, corporate, holiday and lunch catering. Bring Afghan flavors to your gathering.</p><div class="cta"><a class="btn btn-gold" href="#plan">Plan your event</a><a class="btn btn-line" href="#trays">Browse trays</a><a class="btn btn-line" id="co" target="_blank" rel="noopener" href="#">Order catering online</a></div></div></section>
-<section class="plan" id="plan"><div class="plan-fx" aria-hidden="true"></div><div class="wrap">
-<div class="plan-head"><span class="eyebrow">Free · No obligation</span><h2>Plan your event.</h2><p>Answer three quick questions. Your brief updates live, and we confirm availability and the final quote.</p></div>
-<div class="plan-grid">
-<aside class="brief" id="brief" aria-label="Your event brief (live)"><div class="brief-h"><i></i>EVENT BRIEF <span>// LIVE</span></div>
-<dl class="rows"><div><dt>Occasion</dt><dd id="b-occ">Not chosen</dd></div><div><dt>Guests</dt><dd id="b-g">25</dd></div><div><dt>Venue</dt><dd id="b-v">A Street</dd></div><div><dt>Date</dt><dd id="b-d">Not set</dd></div></dl>
-<div class="gauge"><div class="gauge-top"><span id="g-l">Fits A Street</span><span id="g-n">25 / 30</span></div><div class="track"><b id="g-f"></b></div></div>
-<div class="trayrow" id="trayrow" aria-hidden="true"></div>
-<div class="est"><span class="est-l">Ballpark food budget</span><div class="est-n"><span id="e-lo">$0</span><em> to </em><span id="e-hi">$0</span></div><p>From the published tray prices: one meat plus rice, up to two meats, rice and a vegetarian dish. Before tax and delivery. The restaurant confirms the final quote.</p></div>
-</aside>
-<form class="pf rv" id="f" onsubmit="return go(event)" novalidate>
-<ol class="steps" aria-label="Progress"><li class="on" data-s="1"><i>1</i><span>Event</span></li><li data-s="2"><i>2</i><span>Where &amp; when</span></li><li data-s="3"><i>3</i><span>You</span></li></ol><div class="bar"><b id="bar"></b></div>
-<div class="pane on" data-p="1">
- <h3>What are we celebrating?</h3>
- <div class="pills" id="pills" role="group" aria-label="Occasion"><button type="button">Wedding</button><button type="button">Corporate</button><button type="button">Holiday</button><button type="button">Lunch</button><button type="button">Birthday</button><button type="button">Family gathering</button><button type="button">Other</button></div>
- <input type="hidden" id="ev">
- <h3>How many guests?</h3>
- <div class="stepper"><button type="button" id="gm" aria-label="Fewer guests">&minus;</button><input id="gc" type="number" min="1" max="500" value="25" inputmode="numeric" aria-label="Guest count"><button type="button" id="gp" aria-label="More guests">+</button></div>
- <input class="rng" id="rng" type="range" min="5" max="150" step="5" value="25" aria-label="Guest count slider">
- <div class="presets" id="presets"><button type="button" data-n="10">10</button><button type="button" data-n="25">25</button><button type="button" data-n="50">50</button><button type="button" data-n="100">100</button><button type="button" data-n="130">130</button></div>
-</div>
-<div class="pane" data-p="2">
- <h3>Which location works best?</h3>
- <div class="locpick" id="locpick" role="group" aria-label="Location"><button type="button" data-v="astreet" class="on"><b>A Street</b><span>Downtown Hayward</span><em>Parties up to 30</em></button><button type="button" data-v="winton"><b>Winton Avenue</b><span>Hayward</span><em>Parties up to 130</em></button></div>
- <input type="hidden" id="lc" value="astreet">
- <p class="note2" id="vnote" hidden></p>
- <div class="fl"><input id="dt" type="date" placeholder=" "><label for="dt">Event date (optional)</label></div>
- <div class="fl"><textarea id="dd" rows="3" placeholder=" "></textarea><label for="dd">Anything else we should know?</label></div>
-</div>
-<div class="pane" data-p="3">
- <h3>Where should we send the quote?</h3>
- <div class="fl"><input id="nm" autocomplete="name" placeholder=" "><label for="nm">Your name</label></div>
- <div class="two2"><div class="fl"><input id="ph" type="tel" autocomplete="tel" placeholder=" "><label for="ph">Phone</label></div><div class="fl"><input id="em" type="email" autocomplete="email" placeholder=" "><label for="em">Email</label></div></div>
- <input id="co2" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-</div>
-<p class="err" id="err" role="alert"></p>
-<div class="pf-nav"><button type="button" class="back" id="back" hidden>Back</button><button type="button" class="btn btn-gold next" id="next">Continue</button><button class="btn btn-gold next" type="submit" id="sub" hidden>Send inquiry</button></div>
-<p class="fine" id="msg" role="status">An inquiry does not reserve your date.</p>
-<div class="done" id="done" hidden><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none" stroke="#c9a05a" stroke-width="2"/><path d="M15 27l8 8 14-16" fill="none" stroke="#e2bd7a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Thank you!</h3><p>We received your inquiry and will reach out soon.<br><span class="fine">An inquiry does not reserve your date.</span></p></div>
-</form></div></div></section>
-<section id="trays"><div class="wrap"><span class="eyebrow">Catering menu</span><h2 style="margin:.6rem 0">Build a table everyone will love.</h2><p class="fine" style="font-size:.95rem">Small trays serve 10; large trays serve 20. Prices are per tray.</p>
-<div class="catbar" id="catbar" role="group" aria-label="Catering categories"></div><div style="overflow-x:auto"><table class="tray"><thead><tr><th>Catering dish</th><th>Small / serves 10</th><th>Large / serves 20</th></tr></thead><tbody id="tb"></tbody></table></div>
-<div class="phgrid"><img data-photo="trays,1400,900" width="1400" height="900" loading="lazy" alt="Catering trays"><img data-photo="buffet,1000,700" width="1000" height="700" loading="lazy" alt="Catered buffet"></div>
-<div class="cta-bar"><div><b>Planning a private event?</b><br><span class="fine" style="color:#cfc4b0">A Street: up to 30 guests | Winton: up to 130 guests</span></div><a class="btn btn-gold" href="private-events.html">Banquets &amp; reservations</a></div></div></section></main>
-<script src="js/config.js"></script><script src="js/site.js"></script><script>
-const G=GHAZNI;document.getElementById('co').href=G.cateringOrderUrl;let cur=G.catering[0].cat;
-function draw(){document.getElementById('catbar').innerHTML=G.catering.map(c=>'<button aria-pressed="'+(c.cat===cur)+'" data-k="'+c.cat+'">'+c.cat+'</button>').join('');
- document.getElementById('tb').innerHTML=G.catering.find(c=>c.cat===cur).items.map(i=>'<tr><td>'+i[0]+(i[1]?'<small>'+i[1]+'</small>':'')+'</td><td>$'+i[2]+'</td><td>$'+i[3]+'</td></tr>').join('')}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b){cur=b.dataset.k;draw()}});draw();
-const $=i=>document.getElementById(i);let step=1;
+<section class="chero"><div class="chero-img" data-photo="hero,1800,1100"></div><canvas id="bg" aria-hidden="true"></canvas><div class="wrap chero-in"><span class="eyebrow">Ghazni Catering · Hayward</span><h1>Bring everyone<br>to <em class="g">the table.</em></h1><p class="lead">Authentic Afghan flavors for life&rsquo;s gatherings.</p>
+<div class="cta"><a class="btn btn-gold" href="#menu">Explore catering menu</a><a class="btn btn-line" href="#plan">Ask about your event</a></div>
+<p class="cline"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V17h22v10M8 17c0-5 3.5-7 8-7s8 2 8 7M16 10V6M15 6h2M4 27h24M13 27v-5a3 3 0 0 1 6 0v5M3 27V13l1.5-3L6 13v14"/></svg><span>Halal meat</span><i>&middot;</i><span>Vegetarian &amp; vegan options</span><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 25C5 14 12 6 26 6c0 14-7 21-17 19M7 25c4-7 8-10 13-12"/></svg></p></div></section>
+
+<section class="occs" id="occasions"><div class="wrap"><div class="ey-line"><span class="eyebrow">For every occasion</span></div><h2 class="c">A reason to gather. A feast to share.</h2>
+<div class="occ-grid"><a class="occ rv" href="#plan" data-occ="Wedding"><div class="occ-img" data-photo="dining1,1000,700"></div><div class="occ-lab"><span>Weddings &amp; celebrations</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a><a class="occ rv" href="#plan" data-occ="Corporate"><div class="occ-img" data-photo="trays,1000,700"></div><div class="occ-lab"><span>Corporate gatherings</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a><a class="occ rv" href="#plan" data-occ="Holiday"><div class="occ-img" data-photo="buffet,1000,700"></div><div class="occ-lab"><span>Family &amp; holiday parties</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a></div></div></section>
+
+<section class="cmenu" id="menu"><div class="wrap"><div class="cm-head"><div><div class="ey-line l"><span class="eyebrow">The catering menu</span></div><h2>Build a generous spread.</h2><p class="sub">Choose your favorites. We&rsquo;ll help you plan the table.</p></div>
+<div class="legend" aria-label="Tray sizes"><span>Small tray &middot; serves 10</span><span>Large tray &middot; serves 20</span></div></div>
+<div class="cm-tabs"><div class="tabs" id="tabs" role="tablist" aria-label="Catering categories"></div><label class="tog"><input type="checkbox" id="vegtog"><i></i><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 25C5 14 12 6 26 6c0 14-7 21-17 19M7 25c4-7 8-10 13-12"/></svg><span>Show vegetarian &amp; vegan items</span></label></div>
+<div class="cm-grid" id="cgrid" aria-live="polite"></div>
+<p class="cm-note">Prices shown from the published catering menu. Confirm current pricing when ordering.</p>
+<div class="c"><a class="btn btn-out" id="fullmenu" target="_blank" rel="noopener" href="#">View the full catering menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
+
+<section class="more"><div class="more-img" data-photo="mantu,900,1100" role="img" aria-label="Mantu dumplings with yogurt and lentils"></div><div class="more-txt rv"><span class="eyebrow">Something for everyone</span><h2>More than kabobs.</h2><p>Rice, salads, vegetables, and traditional Afghan favorites make the spread your own.</p>
+<div class="thumbs"><figure><img data-photo="bolani,500,400" width="500" height="400" loading="lazy" alt="Bolani"><figcaption>Bolani</figcaption></figure><figure><img data-photo="borani,500,400" width="500" height="400" loading="lazy" alt="Borani Banjan"><figcaption>Borani Banjan</figcaption></figure><figure><img data-photo="sabzi,500,400" width="500" height="400" loading="lazy" alt="Sabzi"><figcaption>Sabzi</figcaption></figure><figure><img data-photo="daal,500,400" width="500" height="400" loading="lazy" alt="Daal"><figcaption>Daal</figcaption></figure></div>
+<a class="link" id="vegjump" href="#menu">Explore vegetarian &amp; vegan options &rarr;</a></div></section>
+
+<section class="cplan" id="plan"><div class="wrap cplan-grid"><div class="cplan-l rv"><div class="ey-line l"><span class="eyebrow">Let&rsquo;s plan your gathering</span></div><h2>Tell us what<br>you have in mind.</h2><p class="sub">Share a few details to start a catering conversation.</p>
+<a class="phone" href="tel:5108253025"><span class="ph-ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.250.2 2.450.57 3.600a1 1 0 0 1-.25 1z"/></svg></span><span><small>Event inquiries</small><b>(510) 825-3025</b></span></a><svg class="orn" viewBox="0 0 220 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 12h86M134 12h86"/><path d="M110 2l10 10-10 10-10-10z"/><path d="M110 7l5 5-5 5-5-5z"/></svg>
+<p class="alt">Or call a location: <a href="tel:5103988940">A Street (510) 398-8940</a> &middot; <a href="tel:5109408100">Winton (510) 940-8100</a></p></div>
+<form class="cform rv" id="f" onsubmit="return go(event)" novalidate><div class="cf-h"><h3>Your event</h3><span class="live"><i></i>Live estimate</span></div>
+<div class="g2"><div class="lf"><select id="ev" required><option value="" disabled selected></option><option>Wedding</option><option>Corporate</option><option>Holiday</option><option>Lunch</option><option>Birthday</option><option>Family gathering</option><option>Other</option></select><label for="ev">Event type</label></div>
+<div class="lf"><input id="gc" type="number" min="1" max="500" inputmode="numeric" placeholder=" "><label for="gc">Approximate guests</label></div>
+<div class="lf"><input id="dt" type="date" placeholder=" "><label for="dt">Event date</label></div>
+<div class="lf"><select id="lc"><option value="astreet">A Street, Hayward</option><option value="winton">Winton Avenue, Hayward</option></select><label for="lc">Event location</label></div></div>
+<div class="est2" id="est2" hidden><span class="est-ic">&asymp;</span><span id="est2t"></span></div>
+<div class="lf"><input id="nm" autocomplete="name" placeholder=" "><label for="nm">Name</label></div>
+<div class="g2"><div class="lf"><input id="em" type="email" autocomplete="email" placeholder=" "><label for="em">Email</label></div><div class="lf"><input id="ph" type="tel" autocomplete="tel" placeholder=" "><label for="ph">Phone</label></div></div>
+<div class="lf"><textarea id="dd" rows="3" placeholder=" "></textarea><label for="dd">Dietary needs or notes</label></div>
+<input id="co2" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<p class="err" id="err" role="alert"></p><button class="btn btn-gold sendbtn" type="submit" id="sub">Send catering inquiry</button>
+<p class="fine" id="msg" role="status">An inquiry does not confirm a booking.</p>
+<div class="done" id="done" hidden><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none" stroke="#c9a05a" stroke-width="2"/><path d="M15 27l8 8 14-16" fill="none" stroke="#b07f2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Thank you!</h3><p>We received your inquiry and will reach out soon.<br><span class="fine">An inquiry does not confirm a booking.</span></p></div></form></div></section>
+</main><script src="js/config.js"></script><script src="js/site.js"></script><script>
+const G=GHAZNI,$=i=>document.getElementById(i);
+const TAB={'Meat dishes':'Kabobs','Salads & rice':'Rice & salads','Vegetarian & vegan':'Vegetarian & vegan','Entrees':'Entrees'};
+const PH={'Chicken Kabob':'murgh','Teka Kabob':'teka','Lamb Kabob':'lamb','Chapli Kabob':'chapli','Shami Kabob':'shami','Chicken Korma':'korma','White Rice':'rice','Brown Rice':'rice','House Salad':'salad','Grilled Chicken Salad':'chickensalad','Mixed Vegetables':'mixveg','Grilled Vegetables':'grilledveg','Bolani':'bolani','Borani Banjan':'borani','Sabzi':'sabzi','Daal':'daal','Lobia':'lobia','Mantu':'mantu','Quabili Pallow':'qabili','Fish Curry':'fish'};
+const VEGEXTRA=['White Rice','Brown Rice','House Salad'];
+const isVeg=(c,n)=>c==='Vegetarian & vegan'||VEGEXTRA.includes(n);
+const PLATE='<svg viewBox="0 0 400 400" fill="none" stroke="currentColor" aria-hidden="true"><polygon points="200,40 236,130 330,96 290,186 360,200 290,214 330,304 236,270 200,360 164,270 70,304 110,214 40,200 110,186 70,96 164,130" stroke-width="3"/><circle cx="200" cy="200" r="64" stroke-width="3"/></svg>';
+let cur=G.catering[0].cat;
+function card(c,i){const k=PH[i[0]],badge=/Korma|Fish|Kofta|Mantu|Quabili|Aushak|Shola Goshti/.test(i[0])&&c!=='Vegetarian & vegan'?'<span class="badge">Entree</span>':'';
+ return '<article class="mc rv in"><div class="mc-img">'+(k?'<img src="'+photo(k,900,600)+'" width="900" height="600" loading="lazy" alt="'+i[0]+'">':'<div class="mc-ph">'+PLATE+'</div>')+badge+'</div><div class="mc-b"><div class="mc-n"><h3>'+i[0]+'</h3><p>'+(i[1]||'')+'</p></div><div class="mc-p"><span><small>Small</small><b>$'+i[2]+'</b></span><span><small>Large</small><b>$'+i[3]+'</b></span></div></div></article>'}
+function draw(){const veg=$('vegtog').checked;
+ $('tabs').innerHTML=G.catering.map(c=>'<button role="tab" aria-selected="'+(!veg&&c.cat===cur)+'" data-k="'+c.cat+'" class="'+(!veg&&c.cat===cur?'on':'')+'">'+TAB[c.cat]+'</button>').join('');
+ let out='';if(veg){G.catering.forEach(c=>c.items.forEach(i=>{if(isVeg(c.cat,i[0]))out+=card(c.cat,i)}))}else out=G.catering.find(c=>c.cat===cur).items.map(i=>card(cur,i)).join('');
+ $('cgrid').innerHTML=out}
+$('tabs').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b){cur=b.dataset.k;$('vegtog').checked=false;draw()}});
+$('vegtog').onchange=draw;
+$('vegjump').onclick=e=>{$('vegtog').checked=true;draw()};
+$('fullmenu').href=G.cateringOrderUrl;
+draw();
+document.querySelectorAll('.occ').forEach(a=>a.addEventListener('click',()=>{$('ev').value=a.dataset.occ;fl()}));
+/* estimate */
 const price=n=>{let r=null;G.catering.forEach(c=>c.items.forEach(i=>{if(i[0]===n&&!r)r=[i[2],i[3]]}));return r};
 const tray=(n,[s,l])=>{const f=Math.floor(n/20),r=n%20;return f*l+(r===0?0:r<=10?s:Math.min(l,2*s))};
 const money=v=>'$'+Math.round(v).toLocaleString('en-US');
-function est(n){const rice=Math.ceil(n/2),chk=price('Chicken Kabob'),tk=price('Teka Kabob'),lb=price('Lamb Kabob'),wr=price('White Rice'),sz=price('Sabzi');
- const lo=tray(n,chk)+tray(rice,wr),hi=tray(n,tk)+tray(n,lb)+tray(rice,wr)+tray(n,sz);return[lo,hi]}
-const cur2={lo:0,hi:0};
-function tween(id,from,to){const el=$(id);if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=money(to);return}
- const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/450),e=1-Math.pow(1-k,3);el.textContent=money(from+(to-from)*e);if(k<1)requestAnimationFrame(f)})(t0)}
-function upd(){const n=Math.max(1,+$('gc').value||1),L=G.locations[$('lc').value],cap=L.cap;
- $('b-occ').textContent=$('ev').value||'Not chosen';$('b-g').textContent=n;$('b-v').textContent=L.name;$('b-d').textContent=$('dt').value||'Not set';
- const pct=Math.min(100,n/cap*100);$('g-f').style.width=pct+'%';$('g-f').className=n>cap?'over':'';$('g-n').textContent=n+' / '+cap;
- $('g-l').textContent=n>cap?'Over capacity: choose Winton Avenue':'Fits '+L.name;
- const tn=Math.ceil(n/10),shown=Math.min(tn,16);$('trayrow').innerHTML='<span class="tl">'+tn+' small tray'+(tn>1?'s':'')+' per dish</span>'+Array.from({length:shown},(_,i)=>'<i style="animation-delay:'+i*30+'ms"></i>').join('')+(tn>16?'<b>+'+(tn-16)+'</b>':'');
- const [lo,hi]=est(n);tween('e-lo',cur2.lo,lo);tween('e-hi',cur2.hi,hi);cur2.lo=lo;cur2.hi=hi;
- $('rng').value=Math.min(150,n);
- const vn=$('vnote');if(n>30&&$('lc').value==='astreet'){vn.hidden=false;vn.textContent='Heads up: A Street seats up to 30 guests. Winton Avenue seats up to 130.'}else vn.hidden=true}
-function setLoc(v){$('lc').value=v;[...$('locpick').children].forEach(x=>x.classList.toggle('on',x.dataset.v===v))}
-function setN(n){n=Math.max(1,Math.min(500,n));$('gc').value=n;if(n>30&&$('lc').value==='astreet')setLoc('winton');upd()}
-function show(n){step=n;document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',+p.dataset.p===n));
- document.querySelectorAll('.steps li').forEach(li=>{const k=+li.dataset.s;li.classList.toggle('on',k===n);li.classList.toggle('ok',k<n)});
- $('bar').style.width=(n*33.34)+'%';$('back').hidden=n===1;$('next').hidden=n===3;$('sub').hidden=n!==3;$('err').textContent=''}
-$('pills').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...$('pills').children].forEach(x=>x.classList.toggle('on',x===b));$('ev').value=b.textContent;$('err').textContent='';upd()});
-$('locpick').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;setLoc(b.dataset.v);upd()});
-$('presets').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setN(+b.dataset.n)});
-$('gm').onclick=()=>setN((+$('gc').value||1)-5);$('gp').onclick=()=>setN((+$('gc').value||0)+5);$('gc').oninput=()=>setN(+$('gc').value||1);$('rng').oninput=e=>setN(+e.target.value);$('dt').oninput=upd;
-$('back').onclick=()=>show(step-1);
-$('next').onclick=()=>{if(step===1){if(!$('ev').value)return $('err').textContent='Please choose an occasion.';if(!(+$('gc').value>0))return $('err').textContent='Please enter your guest count.'}show(step+1)};
+function est(){const n=+$('gc').value;if(!(n>0)){$('est2').hidden=true;return}
+ const rice=Math.ceil(n/2),lo=tray(n,price('Chicken Kabob'))+tray(rice,price('White Rice')),hi=tray(n,price('Teka Kabob'))+tray(n,price('Lamb Kabob'))+tray(rice,price('White Rice'))+tray(n,price('Sabzi'));
+ let t='<b>'+Math.ceil(n/10)+' small</b> or <b>'+Math.ceil(n/20)+' large</b> trays per dish &middot; ballpark <b>'+money(lo)+' &ndash; '+money(hi)+'</b>';
+ if(n>30&&$('lc').value==='astreet'){$('lc').value='winton';t+=' &middot; <em>Winton seats up to 130, so we picked it for you.</em>'}
+ $('est2t').innerHTML=t;$('est2').hidden=false}
+function fl(){[...document.querySelectorAll('.lf select')].forEach(s=>s.classList.toggle('has',!!s.value))}
+$('gc').oninput=est;$('lc').onchange=est;$('ev').onchange=fl;fl();
 async function go(e){e.preventDefault();const m=$('msg'),L=G.locations[$('lc').value],btn=$('sub');$('err').textContent='';
+ if(!$('ev').value)return $('err').textContent='Please choose an event type.';
  if(!$('nm').value.trim()||!$('ph').value.trim()||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('em').value))return $('err').textContent='Please add your name, phone and a valid email.';
  const tel='<a href="tel:'+L.tel.replace(/\D/g,'')+'"><b>'+L.tel+'</b></a>';btn.disabled=true;btn.textContent='Sending…';
- const details=($('dd').value+' | Ballpark: '+$('e-lo').textContent+' to '+$('e-hi').textContent).trim();
+ const details=($('dd').value+($('est2').hidden?'':' | Ballpark: '+$('est2t').textContent.split('ballpark ')[1])).trim();
  try{const r=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('nm').value,phone:$('ph').value,email:$('em').value,type:$('ev').value,guests:$('gc').value,location:L.name,date:$('dt').value,details:details,company:$('co2').value})});
-  if(r.ok){document.querySelectorAll('.pane,.pf-nav,.steps,.bar,#err').forEach(x=>x.hidden=true);$('done').hidden=false;m.hidden=true}
+  if(r.ok){document.querySelectorAll('#f .g2,#f .lf,#f .est2,#f .sendbtn,#f .err,#f .cf-h').forEach(x=>x.hidden=true);$('done').hidden=false;m.hidden=true}
   else if(r.status===400){$('err').textContent=(await r.json()).error}
-  else m.innerHTML='We could not send that online. Please call '+L.name+' at '+tel+'. An inquiry does not reserve your date.';
+  else m.innerHTML='We could not send that online. Please call '+L.name+' at '+tel+'. An inquiry does not confirm a booking.';
  }catch{m.innerHTML='We could not send that online. Please call '+L.name+' at '+tel+'.'}
- btn.disabled=false;btn.textContent='Send inquiry';return false}
-show(1);upd();
+ btn.disabled=false;btn.textContent='Send catering inquiry';return false}
 </script></body></html>
