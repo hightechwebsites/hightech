@@ -20,7 +20,8 @@ em.g{font-style:italic;color:var(--gold)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between;height:78px}
 .logo{text-decoration:none;color:var(--gold2);line-height:1}
 .logo b{display:block;font-family:var(--serif);font-weight:500;font-size:1.9rem;letter-spacing:.2em}
-.logo small{font-size:.5rem;letter-spacing:.42em;color:var(--gold)}
+.logo b{color:#ecc785;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.logo small{display:block;margin-top:.45rem;font-family:var(--serif);font-weight:500;font-size:.62rem;letter-spacing:.46em;color:#f1e7d3;padding-left:.2em}
 .nav{display:flex;gap:1.8rem;align-items:center}
 .nav a{color:#efe6d5;text-decoration:none;font-size:.9rem;position:relative;padding:.3rem 0}
 .nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:.3s}
@@ -139,7 +140,7 @@ input:focus,select:focus,textarea:focus,.btn:focus-visible,button:focus-visible,
 .ftr{background:var(--ink);color:#cfc4b0;padding:3rem 0 2rem;border-top:1px solid var(--line)}
 .ftr .wrap{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
 .ftr nav{display:flex;gap:1.4rem;flex-wrap:wrap}.ftr a{text-decoration:none;font-size:.9rem}.ftr a:hover{color:var(--gold2)}
-.ftr small{display:block;width:100%;text-align:center;opacity:.55;margin-top:1.5rem;font-size:.75rem}
+.ftr .wrap>small{display:block;width:100%;text-align:center;margin-top:1.5rem;font-size:.75rem}
 .ftr em{font-family:var(--serif);font-size:1.2rem;color:var(--gold2)}
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:.8s cubic-bezier(.2,.7,.2,1)}.rv.in{opacity:1;transform:none}
@@ -148,3 +149,11 @@ input:focus,select:focus,textarea:focus,.btn:focus-visible,button:focus-visible,
 @media(max-width:700px){.mbar{display:flex;position:fixed;inset:auto 0 0;z-index:40;background:var(--ink);border-top:1px solid var(--line);padding:.7rem 16px;justify-content:space-between;align-items:center;color:#e6dccb;font-size:.85rem}body{padding-bottom:64px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 .nav a.btn{padding:.6rem 1.2rem;color:var(--ink)}.nav a.btn::after{display:none}
+
+.strip div{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.strip svg{width:26px;height:26px;color:var(--gold);flex:none}
+.halal-badge{display:inline-flex;align-items:center;gap:.5rem;margin:0 0 1.2rem 0;padding:.3rem .8rem .3rem .6rem;border:1px solid var(--gold);border-radius:99px;color:var(--gold2);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;vertical-align:middle;background:rgba(201,160,90,.1)}
+.halal-badge svg{width:18px;height:18px}
+.halal-badge.sm{margin:0 .8rem 0 0;padding:.15rem .6rem .15rem .4rem;font-size:.65rem;opacity:1}
+.ftr .logo{display:inline-block}.ftr .logo b{font-size:1.6rem}.ftr em{display:inline-block;margin-top:.8rem}
+@media(max-width:700px){.strip div{justify-content:flex-start;padding-left:2rem}}

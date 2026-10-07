@@ -9,9 +9,9 @@ const links=[['menu.html','Menu'],['catering.html','Catering'],['private-events.
 document.body.insertAdjacentHTML('afterbegin',`<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap"><a class="logo" href="index.html" aria-label="Ghazni Afghan Kabobs home"><b>GHAZNI</b><small>AFGHAN KABOBS</small></a>
 <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-<nav class="nav" aria-label="Main">${links.map(([h,t])=>`<a href="${h}"${h.startsWith(page)&&page?' aria-current="page"':''}>${t}</a>`).join('')}<a class="btn btn-gold" href="menu.html#order">Order online</a></nav></div></header>`);
-document.body.insertAdjacentHTML('beforeend',`<footer class="ftr"><div class="wrap"><div><em>Afghan hospitality, close to home.</em></div><nav>${links.map(([h,t])=>`<a href="${h}">${t}</a>`).join('')}</nav>
-<small>© ${new Date().getFullYear()} Ghazni Afghan Kabobs · Hayward, CA · Halal · Menus and prices vary by location.</small></div></footer>
+<nav class="nav" aria-label="Main">${links.map(([h,t])=>`<a href="${h}"${h===page+'.html'?' aria-current="page"':''}>${t}</a>`).join('')}<a class="btn btn-gold" href="menu.html#order">Order online</a></nav></div></header>`);
+document.body.insertAdjacentHTML('beforeend',`<footer class="ftr"><div class="wrap"><div><a class="logo" href="index.html" aria-label="Ghazni Afghan Kabobs home"><b>GHAZNI</b><small>AFGHAN KABOBS</small></a><br><em>Afghan hospitality, close to home.</em></div><nav>${links.map(([h,t])=>`<a href="${h}">${t}</a>`).join('')}</nav>
+<small><span class="halal-badge sm" role="img" aria-label="Halal"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V17h22v10M8 17c0-5 3.5-7 8-7s8 2 8 7M16 10V6M15 6h2M4 27h24M13 27v-5a3 3 0 0 1 6 0v5M3 27V13l1.5-3L6 13v14"/></svg>Halal</span> © ${new Date().getFullYear()} Ghazni Afghan Kabobs · Hayward, CA · Menus and prices vary by location.</small></div></footer>
 <div class="mbar"><span>A Street · <span data-open="astreet">…</span></span><a class="btn btn-gold" href="menu.html#order">Order online</a></div>`);
 const hdr=$('.hdr'),b=$('.burger'),nav=$('.nav');
 const sc=()=>hdr.classList.toggle('solid',scrollY>30);sc();addEventListener('scroll',sc,{passive:true});
