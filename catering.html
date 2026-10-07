@@ -1,11 +1,11 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Catering | Ghazni Afghan Kabobs, Hayward</title><meta name="description" content="Afghan catering for weddings, office lunches and family gatherings. Small trays serve 10, large trays serve 20."><meta name="theme-color" content="#14110c">
+<title>Catering | Ghazni Afghan Kabobs, Hayward</title><meta name="description" content="Afghan catering for weddings, corporate events, holidays and family gatherings. Small trays serve 10, large trays serve 20."><meta name="theme-color" content="#14110c"><meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%2314110c%27/%3E%3Cpath d=%27M16 4l3 9 9 3-9 3-3 9-3-9-9-3 9-3z%27 fill=%27%23c9a05a%27/%3E%3C/svg%3E"><link rel="stylesheet" href="css/style.css"></head><body data-page="catering"><main id="main">
-<section class="hero"><canvas id="bg" aria-hidden="true"></canvas><div class="wrap grid" style="align-items:start"><div><span class="eyebrow">Catering · All occasions</span><h1>Good food.<br><em class="g">Great company.</em></h1><p class="lead">From wedding celebrations to office lunches, bring Afghan flavors to the gathering.</p><a class="btn btn-gold" href="#trays">Browse catering</a></div>
+<section class="hero"><div class="bgphoto" data-photo="buffet,1000,700"></div><canvas id="bg" aria-hidden="true"></canvas><div class="wrap grid" style="align-items:start"><div><span class="eyebrow">We cater for all occasions</span><h1>Good food.<br><em class="g">Great company.</em></h1><p class="lead">Event, dinner, party, wedding, corporate, holiday and lunch catering. Bring Afghan flavors to your gathering.</p><div class="cta"><a class="btn btn-gold" href="#trays">Browse catering</a><a class="btn btn-line" id="co" target="_blank" rel="noopener" href="#">Order catering online</a></div></div>
 <form class="form rv" id="f" onsubmit="return go(event)"><h3>Tell us about your event.</h3>
-<label>Event type<select id="ev" required><option value="">Choose an occasion</option><option>Wedding</option><option>Office lunch</option><option>Birthday</option><option>Graduation</option><option>Family gathering</option><option>Other</option></select></label>
+<label>Event type<select id="ev" required><option value="">Choose an occasion</option><option>Wedding</option><option>Corporate</option><option>Holiday</option><option>Lunch</option><option>Birthday</option><option>Family gathering</option><option>Other</option></select></label>
 <label>Guest count<input id="gc" type="number" min="1" placeholder="Approximate number of guests" required></label>
 <label>Preferred location<select id="lc"><option value="astreet">A Street</option><option value="winton">Winton Avenue</option></select></label>
 <label>Event date<input id="dt" type="date"></label>
@@ -13,16 +13,20 @@
 <label>Phone<input id="ph" type="tel" autocomplete="tel" required></label>
 <label>Email<input id="em" type="email" autocomplete="email" required></label>
 <label>Anything else?<textarea id="dd" rows="3"></textarea></label>
-<input id="co" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+<input id="co2" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
 <button class="btn btn-gold" type="submit">Continue to inquiry</button><p class="fine" id="msg" role="status">An inquiry does not reserve your date.</p></form></div></section>
-<section id="trays"><div class="wrap"><span class="eyebrow">Trays for sharing</span><h2 style="margin:.6rem 0">Build a table everyone will love.</h2><p class="fine" style="margin-bottom:1.6rem;font-size:.95rem">Small trays serve 10; large trays serve 20. Catering prices are for reference; confirm with your location.</p>
-<div style="overflow-x:auto"><table class="tray"><thead><tr><th>Catering dish</th><th>Small / serves 10</th><th>Large / serves 20</th></tr></thead><tbody><tr><td>Chicken Kabob</td><td>$110</td><td>$220</td></tr><tr><td>Teka Kabob</td><td>$125</td><td>$225</td></tr><tr><td>Lamb Kabob</td><td>$125</td><td>$225</td></tr><tr><td>Chapli Kabob</td><td>$115</td><td>$215</td></tr><tr><td>White Rice</td><td>$30</td><td>$60</td></tr></tbody></table></div>
-<p class="fine" style="margin-top:1.2rem">Meat dishes · Rice &amp; salads · Vegetarian &amp; vegan · Entrees</p>
-<div class="cta-bar"><div><b>Planning a private event?</b><br><span class="fine" style="color:#cfc4b0">A Street: up to 30 guests | Winton: up to 130 guests</span></div><a class="btn btn-gold" href="private-events.html">Private events</a></div></div></section></main>
+<section id="trays"><div class="wrap"><span class="eyebrow">Catering menu</span><h2 style="margin:.6rem 0">Build a table everyone will love.</h2><p class="fine" style="font-size:.95rem">Small trays serve 10; large trays serve 20. Prices are per tray.</p>
+<div class="catbar" id="catbar" role="group" aria-label="Catering categories"></div><div style="overflow-x:auto"><table class="tray"><thead><tr><th>Catering dish</th><th>Small / serves 10</th><th>Large / serves 20</th></tr></thead><tbody id="tb"></tbody></table></div>
+<div class="phgrid"><img data-photo="trays,1400,900" width="1400" height="900" loading="lazy" alt="Catering trays"><img data-photo="buffet,1000,700" width="1000" height="700" loading="lazy" alt="Catered buffet"></div>
+<div class="cta-bar"><div><b>Planning a private event?</b><br><span class="fine" style="color:#cfc4b0">A Street: up to 30 guests | Winton: up to 130 guests</span></div><a class="btn btn-gold" href="private-events.html">Banquets &amp; reservations</a></div></div></section></main>
 <script src="js/config.js"></script><script src="js/site.js"></script><script>
-async function go(e){e.preventDefault();const $=i=>document.getElementById(i),m=$('msg'),L=GHAZNI.locations[$('lc').value],btn=e.target.querySelector('button');
+const G=GHAZNI;document.getElementById('co').href=G.cateringOrderUrl;let cur=G.catering[0].cat;
+function draw(){document.getElementById('catbar').innerHTML=G.catering.map(c=>'<button aria-pressed="'+(c.cat===cur)+'" data-k="'+c.cat+'">'+c.cat+'</button>').join('');
+ document.getElementById('tb').innerHTML=G.catering.find(c=>c.cat===cur).items.map(i=>'<tr><td>'+i[0]+(i[1]?'<small>'+i[1]+'</small>':'')+'</td><td>$'+i[2]+'</td><td>$'+i[3]+'</td></tr>').join('')}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b){cur=b.dataset.k;draw()}});draw();
+async function go(e){e.preventDefault();const $=i=>document.getElementById(i),m=$('msg'),L=G.locations[$('lc').value],btn=e.target.querySelector('button[type=submit]');
  const tel='<a href="tel:'+L.tel.replace(/\D/g,'')+'"><b>'+L.tel+'</b></a>';btn.disabled=true;m.textContent='Sending…';
- try{const r=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('nm').value,phone:$('ph').value,email:$('em').value,type:$('ev').value,guests:$('gc').value,location:L.name,date:$('dt').value,details:$('dd').value,company:$('co').value})});
+ try{const r=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('nm').value,phone:$('ph').value,email:$('em').value,type:$('ev').value,guests:$('gc').value,location:L.name,date:$('dt').value,details:$('dd').value,company:$('co2').value})});
   if(r.ok){m.innerHTML='Thank you! We received your inquiry and will reach out soon. An inquiry does not reserve your date.';e.target.reset();}
   else if(r.status===400){m.textContent=(await r.json()).error;}
   else m.innerHTML='We could not send that online. Please call '+L.name+' at '+tel+'. An inquiry does not reserve your date.';

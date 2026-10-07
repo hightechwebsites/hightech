@@ -157,3 +157,54 @@ input:focus,select:focus,textarea:focus,.btn:focus-visible,button:focus-visible,
 .halal-badge.sm{margin:0 .8rem 0 0;padding:.15rem .6rem .15rem .4rem;font-size:.65rem;opacity:1}
 .ftr .logo{display:inline-block}.ftr .logo b{font-size:1.6rem}.ftr em{display:inline-block;margin-top:.8rem}
 @media(max-width:700px){.strip div{justify-content:flex-start;padding-left:2rem}}
+/* ===== real-content additions ===== */
+.hero-seal{display:flex;align-items:center;gap:1rem;margin-top:2rem;color:#d8cdb9;font-size:.82rem}
+.hero-seal img{width:64px;height:64px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.5))}
+.plate{position:relative;width:min(470px,92%);aspect-ratio:1;margin-inline:auto}
+.plate img.food{position:absolute;inset:14%;width:72%;height:72%;border-radius:50%;object-fit:cover;box-shadow:0 20px 70px rgba(0,0,0,.65),0 0 0 2px rgba(201,160,90,.55);animation:float 9s ease-in-out infinite}
+.plate .star{position:absolute;inset:0;width:100%;height:100%}
+@keyframes float{50%{transform:translateY(-10px) scale(1.015)}}
+.bgphoto{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;opacity:.28;animation:kb 28s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+@media(max-width:900px){.plate{width:240px;margin:0}}
+.dish .ph{aspect-ratio:4/3}
+.promo .bgimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.38;transition:.6s}
+.promo:hover .bgimg{opacity:.5;transform:scale(1.04)}
+.promo::before{z-index:1;opacity:.5}.promo>*{z-index:2}
+.promo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,17,12,.85),transparent 70%)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;text-align:left}
+@media(max-width:900px){.reviews{grid-template-columns:1fr}}
+.reviews blockquote{background:#fffaf1;border:1px solid #e5d9c3;border-radius:var(--r);padding:1.4rem;font-family:var(--serif);font-size:1.18rem;line-height:1.35}
+.reviews cite{display:block;margin-top:.8rem;font:600 .75rem var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+.band{background:var(--ink);color:#f2e9d8;padding:3rem 0}
+.band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+@media(max-width:800px){.band .wrap{grid-template-columns:1fr}}
+.band .box{border:1px solid var(--line);border-radius:var(--r);padding:1.8rem}
+.band h3{margin:.4rem 0 .6rem}.band p{color:#d8cdb9;margin-bottom:1rem}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.chip{padding:.3rem .8rem;border:1px solid var(--line);border-radius:99px;font-size:.78rem;color:var(--gold2)}
+.tag.vg{background:#d3e6c4}.tag.o{background:#f1e3b7;color:#6b5412}
+.tags{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.45rem}.tags .tag{margin-top:0}
+.item .ph img{inset:0}
+.item .extra{font-size:.78rem;color:var(--gold);font-weight:600;margin-top:.2rem}
+.catnote{color:var(--muted);margin:-.4rem 0 1rem;font-size:.92rem}
+.item{align-items:start}
+.item .price{white-space:nowrap}
+.tray td small{display:block;color:var(--muted);font-size:.8rem;margin-top:.15rem}
+.tray td:nth-child(n+2){white-space:nowrap;font-weight:600}
+.catbar{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0}
+.catbar button{padding:.6rem 1.1rem;border:1px solid var(--ink);border-radius:99px;background:transparent;font:600 .85rem var(--sans);cursor:pointer}
+.catbar button[aria-pressed=true]{background:var(--ink);color:#fff}
+.phgrid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.phgrid img{width:100%;height:100%;object-fit:cover;border-radius:var(--r);aspect-ratio:3/2}
+@media(max-width:700px){.phgrid{grid-template-columns:1fr}}
+.fsocial{display:flex;gap:1.2rem;flex-wrap:wrap;width:100%;justify-content:center;margin-top:.8rem}
+.seal-sm{width:46px;height:46px;display:inline-block;vertical-align:middle;margin-right:.6rem}
+.hero.photo{background:var(--ink)}
+.loc .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.loc .ph{aspect-ratio:16/9}
+.winton-note{background:var(--sand);border-radius:var(--r);padding:1.4rem;margin-bottom:1.4rem}
+.winton-note h3{font-size:1.6rem;margin-bottom:.4rem}
+.fcontact{font-size:.9rem;color:var(--muted);margin-top:.4rem}
+.halal-line{display:flex;align-items:center;gap:.8rem}
+.strip .seal{width:44px;height:44px}

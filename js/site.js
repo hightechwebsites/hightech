@@ -4,14 +4,21 @@ const page=document.body.dataset.page||'';
 const orderHref=k=>G.orderUrl[k]||('tel:'+G.locations[k].tel.replace(/\D/g,''));
 const orderLabel=k=>G.orderUrl[k]?'Order '+G.locations[k].name.replace(' Avenue',''):'Call to order';
 window.orderHref=orderHref;window.orderLabel=orderLabel;
+window.photo=(k,w,h)=>{if(k==='halal')return G.previewCDN?G.photos.halal:'img/halal-certified.png';
+ return G.previewCDN?G.photos[k]+'/v1/fill/w_'+w+',h_'+h+',al_c,q_80/x.jpg':'img/'+k+'.jpg'};
+window.imgTag=(k,w,h,alt)=>'<img src="'+photo(k,w,h)+'" width="'+w+'" height="'+h+'" loading="lazy" alt="'+(alt||'')+'">';
+window.TAGS={V:'Vegetarian',VG:'Vegan',O:'Organic'};
+document.querySelectorAll('[data-photo]').forEach(el=>{const [k,w,h]=el.dataset.photo.split(',');if(el.tagName==='IMG')el.src=photo(k,+w,+h);else el.style.backgroundImage='url('+photo(k,+w,+h)+')'});
 /* header / footer */
 const links=[['menu.html','Menu'],['catering.html','Catering'],['private-events.html','Private events'],['index.html#story','Our story'],['index.html#visit','Visit']];
+const flinks=[['menu.html','Menu'],['catering.html','Catering'],['private-events.html','Private events'],[G.links.giftCard,'Gift cards'],[G.links.loyalty,'Loyalty'],['index.html#visit','Contact']];
 document.body.insertAdjacentHTML('afterbegin',`<a class="skip" href="#main">Skip to content</a>
 <header class="hdr"><div class="wrap"><a class="logo" href="index.html" aria-label="Ghazni Afghan Kabobs home"><b>GHAZNI</b><small>AFGHAN KABOBS</small></a>
 <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 <nav class="nav" aria-label="Main">${links.map(([h,t])=>`<a href="${h}"${h===page+'.html'?' aria-current="page"':''}>${t}</a>`).join('')}<a class="btn btn-gold" href="menu.html#order">Order online</a></nav></div></header>`);
-document.body.insertAdjacentHTML('beforeend',`<footer class="ftr"><div class="wrap"><div><a class="logo" href="index.html" aria-label="Ghazni Afghan Kabobs home"><b>GHAZNI</b><small>AFGHAN KABOBS</small></a><br><em>Afghan hospitality, close to home.</em></div><nav>${links.map(([h,t])=>`<a href="${h}">${t}</a>`).join('')}</nav>
-<small><span class="halal-badge sm" role="img" aria-label="Halal"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V17h22v10M8 17c0-5 3.5-7 8-7s8 2 8 7M16 10V6M15 6h2M4 27h24M13 27v-5a3 3 0 0 1 6 0v5M3 27V13l1.5-3L6 13v14"/></svg>Halal</span> © ${new Date().getFullYear()} Ghazni Afghan Kabobs · Hayward, CA · Menus and prices vary by location.</small></div></footer>
+document.body.insertAdjacentHTML('beforeend',`<footer class="ftr"><div class="wrap"><div><a class="logo" href="index.html" aria-label="Ghazni Afghan Kabobs home"><b>GHAZNI</b><small>AFGHAN KABOBS</small></a><br><em>Afghan hospitality, close to home.</em></div><nav>${flinks.map(([h,t])=>`<a href="${h}"${h.startsWith('http')?' target="_blank" rel="noopener"':''}>${t}</a>`).join('')}</nav>
+<div class="fsocial"><a href="${G.social.facebook}" target="_blank" rel="noopener">Facebook</a><a href="${G.social.instagram}" target="_blank" rel="noopener">Instagram</a><a href="${G.social.yelp}" target="_blank" rel="noopener">Yelp</a><a href="mailto:${G.email}">${G.email}</a></div>
+<small><img class="seal-sm" src="${photo('halal')}" alt="100% Halal Certified" width="46" height="46"><span class="halal-badge sm" role="img" aria-label="Halal"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 27V17h22v10M8 17c0-5 3.5-7 8-7s8 2 8 7M16 10V6M15 6h2M4 27h24M13 27v-5a3 3 0 0 1 6 0v5M3 27V13l1.5-3L6 13v14"/></svg>Halal</span> © ${new Date().getFullYear()} Ghazni Afghan Kabobs · Hayward, CA · Menus and prices vary by location.</small></div></footer>
 <div class="mbar"><span>A Street · <span data-open="astreet">…</span></span><a class="btn btn-gold" href="menu.html#order">Order online</a></div>`);
 const hdr=$('.hdr'),b=$('.burger'),nav=$('.nav');
 const sc=()=>hdr.classList.toggle('solid',scrollY>30);sc();addEventListener('scroll',sc,{passive:true});
